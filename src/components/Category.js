@@ -2,13 +2,16 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import BudgetItem from './BudgetItem';
 
-const Income = ({ props }) => {
+const Category = ({ props }) => {
     return (
         <View style={styles.viewContainer}>
             <View style={{backgroundColor: '#fff'}}>
                 <Text style={styles.title}>{props[0].title}</Text>
                 {
-                    props[0].lineItems.map((item, i) => <BudgetItem title={item.title} amount={item.amount} key={i}/>)
+                    props[0].lineItems.map((item, i) => {
+                        let favorite = props[0].title === "Favorites" && item.favorite
+                        return <BudgetItem title={item.title} amount={item.amount} favorite={favorite} key={i}/>
+                    })
                 }
                     <View style={styles.lineItem}>
                     <Text style={{marginHorizontal: 20, padding: 5}}>Add Item</Text>
@@ -34,4 +37,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Income;
+export default Category;

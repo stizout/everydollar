@@ -1,0 +1,484 @@
+{
+    "month": [
+        {
+            "January": [
+                {
+                    "id": "1",
+                    "category": "expense",
+                    "date": "11/5/19",
+                    "where": "Frys Grocery",
+                    "budgetCategory": "Food",
+                    "budgetItem": "Groceries",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "2",
+                    "category": "expense",
+                    "date": "11/7/19",
+                    "where": "Frys Gas",
+                    "budgetCategory": "Transportation",
+                    "budgetItem": "Gas",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "3",
+                    "category": "expense",
+                    "date": "11/10/19",
+                    "where": "Amex Lunch",
+                    "budgetCategory": "Food",
+                    "budgetItem": "Restaurants",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "4",
+                    "category": "expense",
+                    "date": "11/11/19",
+                    "where": "Swimming Lessons",
+                    "budgetCategory": "Lifestyle",
+                    "budgetItem": "Swimming Lessons",
+                    "notes": "Here are some notes"
+                }
+            ]
+        },
+        {
+            "February": [
+                {
+                    "id": "5",
+                    "category": "expense",
+                    "date": "11/5/19",
+                    "where": "Frys Grocery",
+                    "budgetCategory": "Food",
+                    "budgetItem": "Groceries",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "6",
+                    "category": "expense",
+                    "date": "11/7/19",
+                    "where": "Frys Gas",
+                    "budgetCategory": "Transportation",
+                    "budgetItem": "Gas",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "7",
+                    "category": "expense",
+                    "date": "11/10/19",
+                    "where": "Amex Lunch",
+                    "budgetCategory": "Food",
+                    "budgetItem": "Restaurants",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "8",
+                    "category": "expense",
+                    "date": "11/11/19",
+                    "where": "Swimming Lessons",
+                    "budgetCategory": "Lifestyle",
+                    "budgetItem": "Swimming Lessons",
+                    "notes": "Here are some notes"
+                }
+            ]
+        },
+        {
+            "March": [
+                {
+                    "id": "9",
+                    "category": "expense",
+                    "date": "11/5/19",
+                    "where": "Frys Grocery",
+                    "budgetCategory": "Food",
+                    "budgetItem": "Groceries",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "10",
+                    "category": "expense",
+                    "date": "11/7/19",
+                    "where": "Frys Gas",
+                    "budgetCategory": "Transportation",
+                    "budgetItem": "Gas",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "11",
+                    "category": "expense",
+                    "date": "11/10/19",
+                    "where": "Amex Lunch",
+                    "budgetCategory": "Food",
+                    "budgetItem": "Restaurants",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "12",
+                    "category": "expense",
+                    "date": "11/11/19",
+                    "where": "Swimming Lessons",
+                    "budgetCategory": "Lifestyle",
+                    "budgetItem": "Swimming Lessons",
+                    "notes": "Here are some notes"
+                }
+            ]
+        },
+        {
+            "April": [
+                {
+                    "id": "13",
+                    "category": "expense",
+                    "date": "11/5/19",
+                    "where": "Frys Grocery",
+                    "budgetCategory": "Food",
+                    "budgetItem": "Groceries",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "14",
+                    "category": "expense",
+                    "date": "11/7/19",
+                    "where": "Frys Gas",
+                    "budgetCategory": "Transportation",
+                    "budgetItem": "Gas",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "15",
+                    "category": "expense",
+                    "date": "11/10/19",
+                    "where": "Amex Lunch",
+                    "budgetCategory": "Food",
+                    "budgetItem": "Restaurants",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "16",
+                    "category": "expense",
+                    "date": "11/11/19",
+                    "where": "Swimming Lessons",
+                    "budgetCategory": "Lifestyle",
+                    "budgetItem": "Swimming Lessons",
+                    "notes": "Here are some notes"
+                }
+            ]
+        },
+        {
+            "May": [
+                {
+                    "id": "17",
+                    "category": "expense",
+                    "date": "11/5/19",
+                    "where": "Frys Grocery",
+                    "budgetCategory": "Food",
+                    "budgetItem": "Groceries",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "18",
+                    "category": "expense",
+                    "date": "11/7/19",
+                    "where": "Frys Gas",
+                    "budgetCategory": "Transportation",
+                    "budgetItem": "Gas",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "19",
+                    "category": "expense",
+                    "date": "11/10/19",
+                    "where": "Amex Lunch",
+                    "budgetCategory": "Food",
+                    "budgetItem": "Restaurants",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "20",
+                    "category": "expense",
+                    "date": "11/11/19",
+                    "where": "Swimming Lessons",
+                    "budgetCategory": "Lifestyle",
+                    "budgetItem": "Swimming Lessons",
+                    "notes": "Here are some notes"
+                }
+            ]
+        },
+        {
+            "June": [
+                {
+                    "id": "21",
+                    "category": "expense",
+                    "date": "11/5/19",
+                    "where": "Frys Grocery",
+                    "budgetCategory": "Food",
+                    "budgetItem": "Groceries",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "22",
+                    "category": "expense",
+                    "date": "11/7/19",
+                    "where": "Frys Gas",
+                    "budgetCategory": "Transportation",
+                    "budgetItem": "Gas",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "23",
+                    "category": "expense",
+                    "date": "11/10/19",
+                    "where": "Amex Lunch",
+                    "budgetCategory": "Food",
+                    "budgetItem": "Restaurants",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "24",
+                    "category": "expense",
+                    "date": "11/11/19",
+                    "where": "Swimming Lessons",
+                    "budgetCategory": "Lifestyle",
+                    "budgetItem": "Swimming Lessons",
+                    "notes": "Here are some notes"
+                }
+            ]
+        },
+        {
+            "July": [
+                {
+                    "id": "25",
+                    "category": "expense",
+                    "date": "11/5/19",
+                    "where": "Frys Grocery",
+                    "budgetCategory": "Food",
+                    "budgetItem": "Groceries",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "26",
+                    "category": "expense",
+                    "date": "11/7/19",
+                    "where": "Frys Gas",
+                    "budgetCategory": "Transportation",
+                    "budgetItem": "Gas",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "27",
+                    "category": "expense",
+                    "date": "11/10/19",
+                    "where": "Amex Lunch",
+                    "budgetCategory": "Food",
+                    "budgetItem": "Restaurants",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "28",
+                    "category": "expense",
+                    "date": "11/11/19",
+                    "where": "Swimming Lessons",
+                    "budgetCategory": "Lifestyle",
+                    "budgetItem": "Swimming Lessons",
+                    "notes": "Here are some notes"
+                }
+            ]
+        },
+        {
+            "August": [
+                {
+                    "id": "29",
+                    "category": "expense",
+                    "date": "11/5/19",
+                    "where": "Frys Grocery",
+                    "budgetCategory": "Food",
+                    "budgetItem": "Groceries",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "30",
+                    "category": "expense",
+                    "date": "11/7/19",
+                    "where": "Frys Gas",
+                    "budgetCategory": "Transportation",
+                    "budgetItem": "Gas",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "31",
+                    "category": "expense",
+                    "date": "11/10/19",
+                    "where": "Amex Lunch",
+                    "budgetCategory": "Food",
+                    "budgetItem": "Restaurants",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "32",
+                    "category": "expense",
+                    "date": "11/11/19",
+                    "where": "Swimming Lessons",
+                    "budgetCategory": "Lifestyle",
+                    "budgetItem": "Swimming Lessons",
+                    "notes": "Here are some notes"
+                }
+            ]
+        },
+        {
+            "September": [
+                {
+                    "id": "33",
+                    "category": "expense",
+                    "date": "11/5/19",
+                    "where": "Frys Grocery",
+                    "budgetCategory": "Food",
+                    "budgetItem": "Groceries",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "34",
+                    "category": "expense",
+                    "date": "11/7/19",
+                    "where": "Frys Gas",
+                    "budgetCategory": "Transportation",
+                    "budgetItem": "Gas",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "35",
+                    "category": "expense",
+                    "date": "11/10/19",
+                    "where": "Amex Lunch",
+                    "budgetCategory": "Food",
+                    "budgetItem": "Restaurants",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "35",
+                    "category": "expense",
+                    "date": "11/11/19",
+                    "where": "Swimming Lessons",
+                    "budgetCategory": "Lifestyle",
+                    "budgetItem": "Swimming Lessons",
+                    "notes": "Here are some notes"
+                }
+            ]
+        },
+        {
+            "October": [
+                {
+                    "id": "36",
+                    "category": "expense",
+                    "date": "11/5/19",
+                    "where": "Frys Grocery",
+                    "budgetCategory": "Food",
+                    "budgetItem": "Groceries",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "37",
+                    "category": "expense",
+                    "date": "11/7/19",
+                    "where": "Frys Gas",
+                    "budgetCategory": "Transportation",
+                    "budgetItem": "Gas",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "38",
+                    "category": "expense",
+                    "date": "11/10/19",
+                    "where": "Amex Lunch",
+                    "budgetCategory": "Food",
+                    "budgetItem": "Restaurants",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "39",
+                    "category": "expense",
+                    "date": "11/11/19",
+                    "where": "Swimming Lessons",
+                    "budgetCategory": "Lifestyle",
+                    "budgetItem": "Swimming Lessons",
+                    "notes": "Here are some notes"
+                }
+            ]
+        },
+        {
+            "November": [
+                {
+                    "id": "40",
+                    "category": "expense",
+                    "date": "11/5/19",
+                    "where": "Frys Grocery",
+                    "budgetCategory": "Food",
+                    "budgetItem": "Groceries",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "41",
+                    "category": "expense",
+                    "date": "11/7/19",
+                    "where": "Frys Gas",
+                    "budgetCategory": "Transportation",
+                    "budgetItem": "Gas",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "42",
+                    "category": "expense",
+                    "date": "11/10/19",
+                    "where": "Amex Lunch",
+                    "budgetCategory": "Food",
+                    "budgetItem": "Restaurants",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "43",
+                    "category": "expense",
+                    "date": "11/11/19",
+                    "where": "Swimming Lessons",
+                    "budgetCategory": "Lifestyle",
+                    "budgetItem": "Swimming Lessons",
+                    "notes": "Here are some notes"
+                }
+            ]
+        },
+        {
+            "Christmas": [
+                {
+                    "id": "44",
+                    "category": "expense",
+                    "date": "11/5/19",
+                    "where": "Frys Grocery",
+                    "budgetCategory": "Food",
+                    "budgetItem": "Groceries",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "45",
+                    "category": "expense",
+                    "date": "11/7/19",
+                    "where": "Frys Gas",
+                    "budgetCategory": "Transportation",
+                    "budgetItem": "Gas",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "46",
+                    "category": "expense",
+                    "date": "11/10/19",
+                    "where": "Amex Lunch",
+                    "budgetCategory": "Food",
+                    "budgetItem": "Restaurants",
+                    "notes": "Here are some notes"
+                },
+                {
+                    "id": "47",
+                    "category": "expense",
+                    "date": "11/11/19",
+                    "where": "Swimming Lessons",
+                    "budgetCategory": "Lifestyle",
+                    "budgetItem": "Swimming Lessons",
+                    "notes": "Here are some notes"
+                }
+            ]
+        }
+    ]
+}

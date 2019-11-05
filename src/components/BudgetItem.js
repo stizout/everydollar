@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import { FontAwesome, } from '@expo/vector-icons';
+import { withNavigation } from 'react-navigation';
+import NavigationOptions from './NavigationOptions';
 
-const BudgetItem = ({title, amount}) => {
+
+
+const BudgetItem = ({title, amount, favorite, navigation}) => {
     // Format amount coming in
     const [amountformatted, setAmount] = useState(numberFormater(amount));
     // Saves Original Amount when onFocus
@@ -28,24 +33,28 @@ const BudgetItem = ({title, amount}) => {
     }
     return (
         <View style={styles.viewContainer}>
-            <View style={styles.lineItem}>
-                <TextInput onChangeText={(text) => setNewTitle(text)}>{newTitle}</TextInput>
-                <TextInput 
-                    placeholder={tempAmount}
-                    onFocus={handleTempAmount} 
-                    onChangeText={(text) => handleTypeAhead(numberFormater(text))} 
-                    onBlur={handleAmountChange} 
-                    >
-                    {amountformatted}
-                </TextInput>
-            </View>
+            <TouchableOpacity onPress={() => navigation.navigate('CategoryView', {category: ''})}>
+                <View style={styles.lineItem}>
+                    <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+                        { favorite ? <FontAwesome name="star" style={styles.star}/> : null }
+                        <TextInput onChangeText={(text) => setNewTitle(text)}>{newTitle}</TextInput>
+                    </View>
+                    <TextInput 
+                        placeholder={tempAmount}
+                        onFocus={handleTempAmount} 
+                        onChangeText={(text) => handleTypeAhead(numberFormater(text))} 
+                        onBlur={handleAmountChange} 
+                        >
+                        {amountformatted}
+                    </TextInput>
+                </View>
+            </TouchableOpacity>
             <View style={styles.hr}/>
         </View>
     )
 }
 
 function numberFormater (amount) {
-    console.log(amount)
     let removeChar = amount.replace(/[&/\\$,.]/g, '');
     let number = removeChar.split('');
     if(number.length === 0) {
@@ -81,7 +90,12 @@ const styles = StyleSheet.create({
         marginVertical: 5,
         flexDirection: 'row',
         justifyContent: 'space-between'
+    },
+    star: {
+        color: '#F5D633',
+        marginHorizontal: 5,
+        fontSize: 20
     }
 })
 
-export default BudgetItem;
+export default withNavigation(BudgetItem);

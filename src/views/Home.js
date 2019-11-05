@@ -1,38 +1,39 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import Footer from '../components/Footer';
 import ViewHeader from '../components/ViewHeader'
-import Debt from '../components/Debt';
-import Favorites from '../components/Favorites';
-import Food from '../components/Food';
-import Giving from '../components/Giving';
-import Health from '../components/Health';
-import Income from '../components/Income';
-import Insurance from '../components/Insurance';
-import LifeStyle from '../components/LifeStyle';
-import Savings from '../components/Savings';
-import Personal from '../components/Personal';
-import Transportation from '../components/Transportation';
-import Housing from '../components/Housing';
-import accountdata from '../../account.json'
-import BudgetItem from '../components/BudgetItem';
-import ComponentPicker from '../components/ComponentPicker';
+import Category from '../components/Category';
+import { withNavigation } from 'react-navigation';
+import { connect } from 'react-redux';
+import { getBudget } from '../ducks/actions/budgetActions';
 
-const Home = () => {
-    const [account, setAccount ] = useState([])
-    const [budgets, setBudgets ] = useState([])
+
+const RootHome = ({navigation, trans, category, getBudget}) => {
+    const [budgets, setBudgets ] = useState(null);
+    const [view, setView] = useState('Planned');
+    const [error, setError] = useState(null);
+
     useEffect(() => {
         try {
-            setAccount(accountdata);
-            setBudgets(accountdata.budgets)
+            let budget = getBudget();
+            setBudgets(budget.budgets)
         } catch {
-            console.log('error')
+            setError('Something went Wrong');
         }
       });
       const propsFeeder = (component, budgets) => {
         return budgets.filter((budget) => budget.title === component);
       }
+    //   console.log(view);
+    //   console.log('is this here??', category);
+    //   console.log('is this here??', trans);
+      const handleBudget = (input) => {
+          console.log(input)
+      }
+      if(!budgets) {
+          return <Text>Loading</Text>
+      }
+      console.log('monthly income?', budgets)
     return (
         <View style={styles.viewContainer}>
             <ScrollView>
@@ -41,17 +42,18 @@ const Home = () => {
                 :
                     null
                 }
-                
+                {error && <Text>{error}</Text>}
                 {budgets.length > 0 ? <View>
-                    <Income props={propsFeeder("Income", budgets)} />
-                    <Income props={propsFeeder("Favorites", budgets)}/>
-                    <Income props={propsFeeder("Housing", budgets)}/>
-                    <Income props={propsFeeder("Transportation", budgets)}/>
-                    <Income props={propsFeeder("Food", budgets)}/>
-                    <Income props={propsFeeder("Personal", budgets)}/>
-                    <Income props={propsFeeder("Lifestyle", budgets)}/>
-                    <Income props={propsFeeder("Health", budgets)}/>
-                    <Income props={propsFeeder("Insurance", budgets)}/>
+                    <Category props={propsFeeder("Income", budgets)}/>
+                    <Category props={propsFeeder("Favorites", budgets)} handleBudget={handleBudget}/>
+                    <Category props={propsFeeder("Giving", budgets)} handleBudget={handleBudget}/>
+                    <Category props={propsFeeder("Housing", budgets)} handleBudget={handleBudget}/>
+                    <Category props={propsFeeder("Transportation", budgets)} handleBudget={handleBudget}/>
+                    <Category props={propsFeeder("Food", budgets)} handleBudget={handleBudget}/>
+                    <Category props={propsFeeder("Personal", budgets)} handleBudget={handleBudget}/>
+                    <Category props={propsFeeder("Lifestyle", budgets)} handleBudget={handleBudget}/>
+                    <Category props={propsFeeder("Health", budgets)} handleBudget={handleBudget}/>
+                    <Category props={propsFeeder("Insurance", budgets)} handleBudget={handleBudget}/>
 
                 </View>
                 : null }
@@ -66,6 +68,12 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#F5F7F8'
     }
-})
+});
 
-export default Home;
+let Home = withNavigation(RootHome);
+const mapStateToProps = (state) => ({
+    category: state.category,
+    trans: state.trans
+});
+
+export default connect(mapStateToProps, { getBudget })(Home);

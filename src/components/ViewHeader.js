@@ -7,7 +7,6 @@ const ViewHeader = ({title, budget}) => {
         arr.push(budget[i].amount);
     }
     const [total, setTotal] = useState(arr.reduce((a,b) => +a + +b, 0))
-    console.log('total', total)
     return (
         <View style={styles.viewContainer}>
             <Text style={styles.title}>{title}</Text>

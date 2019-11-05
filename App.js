@@ -5,8 +5,12 @@ import Home from './src/views/Home';
 import Transactions from './src/views/Transactions';
 import Login from './src/views/Login';
 import NavigationOptions from './src/components/NavigationOptions'
+import CategoryView from './src/views/CategoryView';
+import { Provider } from 'react-redux';
+import store from './src/ducks/store';
 
-const navigator = createStackNavigator({
+
+const RootStack = createStackNavigator({
   Home: {
     screen: Home,
     navigationOptions:  {
@@ -24,6 +28,13 @@ const navigator = createStackNavigator({
 
   Login: {
     screen: Login,
+    navigationOptions:  {
+      headerLeft: null,
+      gesturesEnabled: false,
+   }
+  },
+  CategoryView: {
+    screen: CategoryView,
     navigationOptions:  {
       headerLeft: null,
       gesturesEnabled: false,
@@ -51,4 +62,14 @@ const navigator = createStackNavigator({
   },
 });
 
-export default createAppContainer(navigator);
+let Navigator = createAppContainer(RootStack)
+
+export default class App extends React.Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <Navigator />
+      </Provider>
+    )
+  }
+}

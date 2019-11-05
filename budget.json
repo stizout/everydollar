@@ -1,0 +1,252 @@
+{
+"budgets": [
+    {
+        "title": "Income",
+        "lineItems": [
+            {
+                "id": "1",
+                "title": "Paycheck 1",
+                "amount": "226600"
+            },
+            {
+                "id": "2",
+                "title": "Paycheck 2",
+                "amount": "226600"
+            },
+            {
+                "id": "3",
+                "title": "Paycheck CH 1",
+                "amount": "158400"
+            },
+            {
+                "id": "14",
+                "title": "Paycheck CH 2",
+                "amount": "147747"
+            }
+        ]
+    },
+    {
+        "title": "Favorites",
+        "lineItems": [
+            {
+                "id": "1",
+                "title": "Tithing",
+                "amount": "77400",
+                "favorite": true
+            }
+        ]
+    },
+    {
+        "title": "Giving",
+        "lineItems": [
+            {
+                "id": "1",
+                "title": "Tithing",
+                "amount": "77400",
+                "favorite": true
+            },
+            {
+                "id": "2",
+                "title": "Charity",
+                "amount": "000",
+                "favorite": false
+            }
+        ]
+    },
+    {
+        "title": "Savings",
+        "lineItems": [
+            {
+                "id": "1",
+                "title": "Emergency Fund",
+                "amount": "000",
+                "favorite": false
+            }
+        ]
+    },
+    {
+        "title": "Housing",
+        "lineItems": [
+            {
+                "id": "1",
+                "title": "Mortgage",
+                "amount": "160000",
+                "favorite": false
+            },
+            {
+                "id": "2",
+                "title": "WST",
+                "amount": "9900",
+                "favorite": false
+            },
+            {
+                "id": "3",
+                "title": "Electricity",
+                "amount": "17700",
+                "favorite": false
+            },
+            {
+                "id": "4",
+                "title": "House Fund",
+                "amount": "50000",
+                "favorite": false
+            },
+            {
+                "id": "5",
+                "title": "Internet",
+                "amount": "4500",
+                "favorite": false
+            }
+        ]
+    },
+    {
+        "title": "Transportation",
+        "lineItems": [
+            {
+                "id": "1",
+                "title": "Gas",
+                "amount": "40000",
+                "favorite": false
+            },
+            {
+                "id": "2",
+                "title": "Maintennance",
+                "amount": "1000",
+                "favorite": false
+            }
+        ]
+    },
+    {
+        "title": "Food",
+        "lineItems": [
+            {
+                "id": "1",
+                "title": "Groceries",
+                "amount": "55000",
+                "favorite": false
+            },
+            {
+                "id": "2",
+                "title": "Restaurants",
+                "amount": "30000",
+                "favorite": false
+            }
+        ]
+    },
+    {
+        "title": "Personal",
+        "lineItems": [
+            {
+                "id": "1",
+                "title": "Clothing",
+                "amount": "15000",
+                "favorite": false
+            },
+            {
+                "id": "2",
+                "title": "Phone",
+                "amount": "10000",
+                "favorite": false
+            },
+            {
+                "id": "3",
+                "title": "Hair/Cosmetics",
+                "amount": "9000",
+                "favorite": false
+            },
+            {
+                "id": "4",
+                "title": "Subscriptions",
+                "amount": "800",
+                "favorite": false
+            },
+            {
+                "id": "5",
+                "title": "Birthday",
+                "amount": "10000",
+                "favorite": false
+            }
+        ]
+    },
+    {
+        "title": "Lifestyle",
+        "lineItems": [
+            {
+                "id": "1",
+                "title": "Child Care",
+                "amount": "40000",
+                "favorite": false
+            },
+            {
+                "id": "2",
+                "title": "Entertainment",
+                "amount": "10000",
+                "favorite": false
+            },
+            {
+                "id": "3",
+                "title": "Miscellaneous",
+                "amount": "20000",
+                "favorite": false
+            },
+            {
+                "id": "4",
+                "title": "Swimming Lessons",
+                "amount": "000",
+                "favorite": false
+            },
+            {
+                "id": "5",
+                "title": "Tutor",
+                "amount": "10800",
+                "favorite": false
+            }
+        ]
+    },
+    {
+        "title": "Health",
+        "lineItems": [
+            {
+                "id": "1",
+                "title": "Medicine",
+                "amount": "000",
+                "favorite": false
+            }
+        ]
+    },
+    {
+        "title": "Insurance",
+        "lineItems": [
+            {
+                "id": "1",
+                "title": "Life Insurance",
+                "amount": "4300",
+                "favorite": false
+            },
+            {
+                "id": "2",
+                "title": "Auto Insurance",
+                "amount": "14100",
+                "favorite": false
+            },
+            {
+                "id": "3",
+                "title": "Home Insurance",
+                "amount": "1700",
+                "favorite": false
+            }
+        ]
+    },
+    {
+        "title": "Debt",
+        "lineItems": [
+            {
+                "id": "1",
+                "title": "Student Loan",
+                "amount": "5200",
+                "favorite": false
+            }
+        ]
+    }
+]
+}

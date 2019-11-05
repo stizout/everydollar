@@ -60,7 +60,7 @@ const NavigationOptions = () => {
                         <Text style={styles.buttonFont}>Spent</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.button}>
-                        <Text style={styles.buttonFont}>Remainging</Text>
+                        <Text style={styles.buttonFont}>Remaining</Text>
                     </TouchableOpacity>
                 </View>
             </View>
