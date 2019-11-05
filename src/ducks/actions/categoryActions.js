@@ -1,8 +1,11 @@
-import accountdata from '../../../account.json'
 
 
-const GET_BUDGET = 'GET_BUDGET';
+const SET_CATEGORY = 'SET_CATEGORY'
 
-export const getBudget = () => dispatch => {
-    return accountdata
+export const setCategory = (category) => {
+    console.log("hit category Actions", category)
+    return {
+        type: SET_CATEGORY,
+        payload: category
+    }
 }

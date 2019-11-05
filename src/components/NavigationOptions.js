@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
 import { Feather, Ionicons } from '@expo/vector-icons';
 import moment from 'moment';
+import { connect } from 'react-redux';
+import { setCategory } from '../ducks/actions/categoryActions';
 
 
-const NavigationOptions = () => {
+const NavigationOptions = ({setCategory}) => {
     const [showMonths, setShow] = useState(false);
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept','Oct', 'Nov', 'Dec'];
 
@@ -56,7 +58,7 @@ const NavigationOptions = () => {
                     <TouchableOpacity style={styles.button}>
                         <Text style={styles.buttonFont}>Planned</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonMiddle}>
+                    <TouchableOpacity style={styles.buttonMiddle} onPress={() => setCategory("Spent")}>
                         <Text style={styles.buttonFont}>Spent</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.button}>
@@ -140,6 +142,9 @@ const styles = StyleSheet.create({
     buttonFont: {
         fontSize: 20
     }
-})
+});
 
-export default NavigationOptions;
+const mapStateToProps = () => ({});
+
+
+export default connect(mapStateToProps, {setCategory})(NavigationOptions);
