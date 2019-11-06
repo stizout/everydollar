@@ -55,13 +55,13 @@ const NavigationOptions = ({setCategory}) => {
                     : null
                 }
                 <View style={styles.spendingDiv}>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button} onPress={() => setCategory("Planned")}>
                         <Text style={styles.buttonFont}>Planned</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.buttonMiddle} onPress={() => setCategory("Spent")}>
                         <Text style={styles.buttonFont}>Spent</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button} onPress={() => setCategory("Remaining")}>
                         <Text style={styles.buttonFont}>Remaining</Text>
                     </TouchableOpacity>
                 </View>

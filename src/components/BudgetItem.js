@@ -6,7 +6,8 @@ import NavigationOptions from './NavigationOptions';
 
 
 
-const BudgetItem = ({title, amount, favorite, navigation}) => {
+const BudgetItem = ({screen, total,title, amount, favorite, navigation}) => {
+
     // Format amount coming in
     const [amountformatted, setAmount] = useState(numberFormater(amount));
     // Saves Original Amount when onFocus
@@ -33,12 +34,13 @@ const BudgetItem = ({title, amount, favorite, navigation}) => {
     }
     return (
         <View style={styles.viewContainer}>
-            <TouchableOpacity onPress={() => navigation.navigate('CategoryView', {category: ''})}>
+            <TouchableOpacity onPress={() => navigation.navigate('CategoryView', {category: ''})} disabled={screen !== "Planned"}>
                 <View style={styles.lineItem}>
                     <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
                         { favorite ? <FontAwesome name="star" style={styles.star}/> : null }
                         <TextInput onChangeText={(text) => setNewTitle(text)}>{newTitle}</TextInput>
                     </View>
+                    {screen === "Planned" ? 
                     <TextInput 
                         placeholder={tempAmount}
                         onFocus={handleTempAmount} 
@@ -46,7 +48,8 @@ const BudgetItem = ({title, amount, favorite, navigation}) => {
                         onBlur={handleAmountChange} 
                         >
                         {amountformatted}
-                    </TextInput>
+                    </TextInput> :
+                    <Text>{numberFormater(total.toString())}</Text>}
                 </View>
             </TouchableOpacity>
             <View style={styles.hr}/>
@@ -57,7 +60,7 @@ const BudgetItem = ({title, amount, favorite, navigation}) => {
 function numberFormater (amount) {
     let removeChar = amount.replace(/[&/\\$,.]/g, '');
     let number = removeChar.split('');
-    if(number.length === 0) {
+    if(number.length === 0 || amount === '0') {
         return "$0.00"
     } else if(number.length === 6) {
         number.splice(1, 0, ',');
@@ -72,7 +75,6 @@ function numberFormater (amount) {
     number.splice(number.length -2 , 0, ".");
     number.splice(0, 0, "$");
     return number.join('');
-    // return format.toFixed(2);
 }
 
 const styles = StyleSheet.create({

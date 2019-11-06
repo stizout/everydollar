@@ -4,35 +4,23 @@ import Footer from '../components/Footer';
 import ViewHeader from '../components/ViewHeader'
 import { withNavigation } from 'react-navigation';
 import { connect } from 'react-redux';
-import { getBudget } from '../ducks/actions/budgetActions';
+import { getBudget, getTransactions } from '../ducks/actions/budgetActions';
 import ScreenMapper from '../components/ScreenMapper';
+import transactions from '../../transactions.json'
+import budgetArr from '../../budget.json'
 
 
-const RootHome = ({navigation, trans, category, getBudget}) => {
-    const [budgets, setBudgets ] = useState(null);
-    const [error, setError] = useState(null);
 
-    useEffect(() => {
-        try {
-            let budget = getBudget();
-            setBudgets(budget.budgets)
-        } catch {
-            setError('Something went Wrong');
-        }
-      });
-      if(!budgets) {
+const RootHome = ({navigation, category}) => {
+    const { november: {budgetCategories} } = budgetArr;
+      if(!budgetCategories) {
           return <Text>Loading</Text>
       }
     return (
         <View style={styles.viewContainer}>
             <ScrollView>
-                {budgets.length > 0 ?
-                    <ViewHeader title="Monthly Income" budget={budgets[0].lineItems}/>
-                :
-                    null
-                }
-                {error && <Text>{error}</Text>}
-                <ScreenMapper screen={category.category} budgets={budgets}/>
+                <ViewHeader title="Monthly Income" budget={budgetCategories[0]}/>
+                <ScreenMapper screen={category.category} budgets={budgetCategories} transactions={transactions} />
             </ScrollView>
             <Footer />
         </View>
@@ -52,4 +40,4 @@ const mapStateToProps = (state) => ({
     trans: state.trans
 });
 
-export default connect(mapStateToProps, { getBudget })(Home);
+export default connect(mapStateToProps, { getBudget, getTransactions })(Home);

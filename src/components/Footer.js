@@ -5,7 +5,7 @@ import { FontAwesome, } from '@expo/vector-icons';
 import { MaterialIcons, } from '@expo/vector-icons';
 import Button from './Button';
 
-const Footer = () => {
+const Footer = ({navigation}) => {
     return (
         <View style={styles.footerContainer}>
             <Button title={"Home"} view={"Home"} style={styles.button} Icon={FontAwesome} iconName="money"/>

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import Footer from '../components/Footer';
 
 const CategoryView = () => {
     return (
         <View style={styles.viewContainer}>
             <Text>Does this work???</Text>
+            <Footer />
         </View>
     )
 }
