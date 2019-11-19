@@ -8,3 +8,11 @@ export const setCategory = (category) => {
         payload: category
     }
 }
+
+
+export const setAddModel = (value) => {
+    return {
+        type: 'SET_ADD_MODEL',
+        payload: value
+    }
+}

@@ -3,10 +3,14 @@ import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native
 import { Feather, Ionicons } from '@expo/vector-icons';
 import moment from 'moment';
 import { connect } from 'react-redux';
-import { setCategory } from '../ducks/actions/categoryActions';
+import { setCategory, setAddModel } from '../ducks/actions/categoryActions';
+import Button from './Button';
+import { withNavigation } from 'react-navigation';
+import AddTransaction from '../views/AddTransaction';
 
 
-const NavigationOptions = ({setCategory}) => {
+
+const NavigationOptions = ({setCategory, navigation, setAddModel, category}) => {
     const [showMonths, setShow] = useState(false);
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept','Oct', 'Nov', 'Dec'];
 
@@ -24,7 +28,7 @@ const NavigationOptions = ({setCategory}) => {
             setShow(false);
         }
     }
-
+    console.log('model being shown', category.showAddModel)
     return (
             <View style={{zIndex: 0}}>
                 <View style={styles.monthDiv}>
@@ -34,7 +38,11 @@ const NavigationOptions = ({setCategory}) => {
                             <Ionicons name="ios-arrow-down" style={styles.downArrow}/>
                         </Text>
                     </TouchableOpacity>
-                    <Feather name="plus" style={styles.plusSign}/>
+                    {category.showAddModel ? null : 
+                    <TouchableOpacity style={styles.plusSignContainer} onPress={() => setAddModel(true)}>
+                        <Feather name="plus" style={styles.plusSign}/>
+                    </TouchableOpacity>
+                    }
                 </View>
                 {
                     showMonths ?
@@ -90,9 +98,11 @@ const styles = StyleSheet.create({
         fontSize: 18,
         marginLeft: 15
     }, 
-    plusSign: {
+    plusSignContainer: {
         position: 'absolute',
         right: 10,
+    },
+    plusSign: {
         fontSize: 30
     },
     monthsModal: {
@@ -144,7 +154,7 @@ const styles = StyleSheet.create({
     }
 });
 
-const mapStateToProps = () => ({});
+const mapStateToProps = (state) => ({category: state.category});
+let RootNavigationOptions = withNavigation(NavigationOptions)
 
-
-export default connect(mapStateToProps, {setCategory})(NavigationOptions);
+export default connect(mapStateToProps, {setCategory, setAddModel})(RootNavigationOptions);

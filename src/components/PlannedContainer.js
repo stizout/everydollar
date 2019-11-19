@@ -10,14 +10,7 @@ const PlannedContainer = ({ title, budgetItems, transactions, screen }) => {
             } else {
                 return 0
             }
-        })
-        // return arr
-        // let month = moment().format("MMMM");
-        // let months = transactions[month].filter((item) => item["amount"])
-        // let arr = [];
-        // for(let i = 0; i < months.length; i++) {
-        //     arr.push(+months[i])
-        // }
+        });
         return arr.reduce((a,b) => a + b)
     }
     return (

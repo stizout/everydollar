@@ -2,8 +2,9 @@ import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import Home from './src/views/Home';
-import Transactions from './src/views/Transactions';
 import Login from './src/views/Login';
+import Transactions from './src/views/Transactions';
+import AddTransaction from './src/views/AddTransaction';
 import NavigationOptions from './src/components/NavigationOptions'
 import CategoryView from './src/views/CategoryView';
 import { Provider } from 'react-redux';
@@ -39,7 +40,7 @@ const RootStack = createStackNavigator({
       headerLeft: null,
       gesturesEnabled: false,
    }
-  }
+  },
 },
  {
   initialRouteName: 'Home',

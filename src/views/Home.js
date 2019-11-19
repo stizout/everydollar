@@ -4,27 +4,46 @@ import Footer from '../components/Footer';
 import ViewHeader from '../components/ViewHeader'
 import { withNavigation } from 'react-navigation';
 import { connect } from 'react-redux';
-import { getBudget, getTransactions } from '../ducks/actions/budgetActions';
+import { getTransactions } from '../ducks/actions/budgetActions';
+import { getBudget } from '../ducks/reducers/budgetReducer';
 import ScreenMapper from '../components/ScreenMapper';
 import transactions from '../../transactions.json'
 import budgetArr from '../../budget.json'
+import { bindActionCreators } from 'redux'
+import jsonServer from '../api/jsonServer';
+import AddTransaction from './AddTransaction';
 
 
 
-const RootHome = ({navigation, category}) => {
+
+const RootHome = ({navigation, category, getBudget, budget}) => {
+    const [ budget2, setBudget ] = useState([]);
     const { november: {budgetCategories} } = budgetArr;
+    useEffect(() => {
+        if(budget) {
+            jsonServer.get('/budget').then(res => {
+                getBudget(res.data)
+            });
+        }
+    }, []);
       if(!budgetCategories) {
           return <Text>Loading</Text>
       }
-    return (
-        <View style={styles.viewContainer}>
-            <ScrollView>
-                <ViewHeader title="Monthly Income" budget={budgetCategories[0]}/>
-                <ScreenMapper screen={category.category} budgets={budgetCategories} transactions={transactions} />
-            </ScrollView>
-            <Footer />
-        </View>
-    )
+
+      if(category.showAddModel) {
+          return <AddTransaction />
+      } else {
+          return (
+              <View style={styles.viewContainer}>
+                  <ScrollView>
+                      <ViewHeader title="Monthly Income" budget={budgetCategories[0]}/>
+                      <ScreenMapper screen={category.category} budgets={budgetCategories} transactions={transactions} />
+                  </ScrollView>
+                  <Footer />
+              </View>
+          )
+      }
+
 }
 
 const styles = StyleSheet.create({
@@ -37,7 +56,8 @@ const styles = StyleSheet.create({
 let Home = withNavigation(RootHome);
 const mapStateToProps = (state) => ({
     category: state.category,
-    trans: state.trans
+    trans: state.trans,
+    budget: state.budget
 });
 
-export default connect(mapStateToProps, { getBudget, getTransactions })(Home);
+export default connect(mapStateToProps, {getBudget,getTransactions})(Home);
