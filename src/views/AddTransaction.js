@@ -68,7 +68,6 @@ class AddTransaction extends React.Component {
 
     render() {
         const { day, month, year, type, showBudgetItem, budgetCategories } = this.state;
-        console.log(this.state)
         return (
             <View style={styles.viewContainer}>
                 <TouchableOpacity onPress={() => this.props.setAddModel(false)}>

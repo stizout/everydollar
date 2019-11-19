@@ -28,7 +28,6 @@ const NavigationOptions = ({setCategory, navigation, setAddModel, category}) => 
             setShow(false);
         }
     }
-    console.log('model being shown', category.showAddModel)
     return (
             <View style={{zIndex: 0}}>
                 <View style={styles.monthDiv}>

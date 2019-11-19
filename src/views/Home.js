@@ -4,29 +4,33 @@ import Footer from '../components/Footer';
 import ViewHeader from '../components/ViewHeader'
 import { withNavigation } from 'react-navigation';
 import { connect } from 'react-redux';
-import { getTransactions } from '../ducks/actions/budgetActions';
-import { getBudget } from '../ducks/reducers/budgetReducer';
+import { setBudget } from '../ducks/reducers/budgetReducer';
+import { setTransactions } from '../ducks/reducers/transactionsReducer';
 import ScreenMapper from '../components/ScreenMapper';
-import transactions from '../../transactions.json'
 import budgetArr from '../../budget.json'
-import { bindActionCreators } from 'redux'
 import jsonServer from '../api/jsonServer';
 import AddTransaction from './AddTransaction';
 
 
 
 
-const RootHome = ({navigation, category, getBudget, budget}) => {
-    const [ budget2, setBudget ] = useState([]);
+const RootHome = ({navigation, category, setBudget, budget, setTransactions}) => {
+    const [ budget2, setTempBudget ] = useState([]);
+    const [ transactions, setTempTransactions ] = useState([]);
     const { november: {budgetCategories} } = budgetArr;
     useEffect(() => {
         if(budget) {
             jsonServer.get('/budget').then(res => {
-                getBudget(res.data)
+                setTempBudget(res.data.november.budgetCategories);
+                setBudget(res.data);
+                jsonServer.get('/transactions').then(response => {
+                    setTempTransactions(response.data);
+                    setTransactions(response.data);
+                })
             });
         }
     }, []);
-      if(!budgetCategories) {
+      if(budget2.length === 0) {
           return <Text>Loading</Text>
       }
 
@@ -37,7 +41,7 @@ const RootHome = ({navigation, category, getBudget, budget}) => {
               <View style={styles.viewContainer}>
                   <ScrollView>
                       <ViewHeader title="Monthly Income" budget={budgetCategories[0]}/>
-                      <ScreenMapper screen={category.category} budgets={budgetCategories} transactions={transactions} />
+                      <ScreenMapper screen={category.category} budgets={budget2} transactions={transactions} />
                   </ScrollView>
                   <Footer />
               </View>
@@ -57,7 +61,7 @@ let Home = withNavigation(RootHome);
 const mapStateToProps = (state) => ({
     category: state.category,
     trans: state.trans,
-    budget: state.budget
+    budget: state.budget,
 });
 
-export default connect(mapStateToProps, {getBudget,getTransactions})(Home);
+export default connect(mapStateToProps, {setBudget, setTransactions})(Home);

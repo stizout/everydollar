@@ -10,7 +10,6 @@ const InitialState = {
 const GET_BUDGET = 'GET_BUDGET';
 
 export default function(state = InitialState, action) {
-    console.log(action.type)
     switch(action.type) {
         case GET_BUDGET:
             return {...state, budget: action.payload}
@@ -19,7 +18,7 @@ export default function(state = InitialState, action) {
 }
 
 
-export const getBudget = (budget) => {
+export const setBudget = (budget) => {
     return {
         type: GET_BUDGET,
         payload: budget

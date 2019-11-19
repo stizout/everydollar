@@ -4,14 +4,16 @@ import BudgetItem from './BudgetItem';
 
 const PlannedContainer = ({ title, budgetItems, transactions, screen }) => {
     const sumTrans = (transactions, item) => {
-        let arr = transactions["November"].map((e) => {
+        let arr = transactions.map((e) => {
             if(e.budgetItem === item.title) {
                 return +e["amount"]
             } else {
                 return 0
             }
         });
-        return arr.reduce((a,b) => a + b)
+        if(arr.length > 0) {
+            return arr.reduce((a,b) => a + b)
+        }
     }
     return (
         <View style={styles.viewContainer}>
