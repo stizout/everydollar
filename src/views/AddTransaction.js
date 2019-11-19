@@ -24,30 +24,30 @@ class AddTransaction extends React.Component {
             budgetCategory: null,
             budgetItem: null,
             notes: null,
-            monthId: null,
-            showBudgetItem: false,
+            showBudgetModel: false,
             budgetCategories: [],
+            merchant: null,
         }
     }
     setDate = (att, value) => {
         switch(att) {
             case 'month':
-                setMonth(value)
+                this.setState({month: value})
                 break;
             case 'day':
-                setDay(value);
+                this.setState({day: value})
                 break;
             case 'year':
-                setYear(value)
+                this.setState({year: value})
                 break;
         }
     }
 
-    showBudgetItem = () => {
+    showBudgetModel = () => {
         jsonServer.get('/budget').then(res => {
             this.setState({
                 budgetCategories: res.data.november.budgetCategories,
-                showBudgetItem: true,
+                showBudgetModel: true,
             })
         });
     }
@@ -66,8 +66,35 @@ class AddTransaction extends React.Component {
         jsonServer.post('/transactions', newTransaction);
     }
 
+    handleCategory = (e, ele) => {
+        this.setState({
+            budgetCategory: e.title,
+            budgetItem: ele.title,
+            showBudgetModel: false
+        })
+    }
+
+    handleSubmitTransaction = () => {
+        const {day, month, year, type, showBudgetModel, budgetCategory, notes, amount, budgetItem, merchant } = this.state;
+
+        let newTransaction = {
+            category: type,
+            date: `${month}/${day}/${year}`,
+            amount,
+            where: merchant,
+            budgetCategory,
+            budgetItem,
+            notes,
+            monthId: +month
+        }
+        jsonServer.post('/transactions', newTransaction).then(() => {
+            this.props.setAddModel(false)
+        })
+    }
+
     render() {
-        const { day, month, year, type, showBudgetItem, budgetCategories } = this.state;
+        const { day, month, year, type, showBudgetModel, budgetCategories, amount, notes, budgetItem, merchant } = this.state;
+        console.log(this.state)
         return (
             <View style={styles.viewContainer}>
                 <TouchableOpacity onPress={() => this.props.setAddModel(false)}>
@@ -87,7 +114,7 @@ class AddTransaction extends React.Component {
                         <Text style={styles.label}>Date</Text>
                         <View style={styles.rowMonth}>
                             <RNPickerSelect
-                                onValueChange={(value) => setDate('month', value)}
+                                onValueChange={(value) => this.setDate('month', value)}
                                 value={month}
                                 items={[
                                     { label: 'January', value: '01' },
@@ -105,7 +132,7 @@ class AddTransaction extends React.Component {
                                 ]}
                             />
                             <RNPickerSelect
-                                onValueChange={(value) => setDate('day', value)}
+                                onValueChange={(value) => this.setDate('day', value)}
                                 value={day}
                                 items={[
                                     { label: '1', value: '1' },
@@ -143,7 +170,7 @@ class AddTransaction extends React.Component {
                                 style={{marginHorizontal: 5}}
                             />
                         <RNPickerSelect
-                                onValueChange={(value) => setDate('year', value)}
+                                onValueChange={(value) => this.setDate('year', value)}
                                 style={{fontSize: 20}}
                                 value={year}
                                 items={[
@@ -155,32 +182,37 @@ class AddTransaction extends React.Component {
                     </View>
                     <View style={styles.row}>
                         <Text style={styles.label}>Amount</Text>
-                        <TextInput placeholder="0.00"/>
+                        <TextInput placeholder="0.00" onChangeText={(value) => this.setState({amount: value})} value={amount}/>
                     </View>
-                    <TouchableOpacity style={styles.row} onPress={() => this.showBudgetItem()}>
+                    <TouchableOpacity style={styles.row} onPress={() => this.showBudgetModel()}>
                         <Text style={styles.label}>Category</Text>
+                        <Text>{budgetItem}</Text>
                         <FontAwesome name="arrow-right"  style={{marginLeft: 190, fontSize: 20}}/>
                     </TouchableOpacity>
                     <View style={styles.row}>
                         <Text style={styles.label}>Merchant</Text>
-                        <TextInput placeholder="Name" />
+                        <TextInput placeholder="Name" onChangeText={(value) => this.setState({merchant: value})} value={merchant}/>
                     </View>
                     <View style={styles.row}>
                         <Text style={styles.label}>Notes</Text>
-                        <TextInput placeholder="Notes about the transaction" />
+                        <TextInput placeholder="Notes about the transaction" onChangeText={(value) => this.setState({notes: value})} value={notes}/>
                     </View>
                 </View>
-                <TouchableOpacity onPress={() => this.submitTransaction()}>
+                <TouchableOpacity onPress={() => this.handleSubmitTransaction()}>
                     <Text>Submit</Text>
                 </TouchableOpacity>
-                {showBudgetItem ?
+                {showBudgetModel ?
                     <View style={styles.categoryContainer}>
-                        <TouchableOpacity onPress={() => this.setState({showBudgetItem: false})}>
+                        <TouchableOpacity onPress={() => this.setState({showBudgetModel: false})}>
                             <FontAwesome name="close" style={{fontSize: 35}}/>
                         </TouchableOpacity>
                         {budgetCategories.map((e, i) => {
                             return e.budgetItems.map(ele => {
-                                return <Text style={{textAlign: 'center'}}>{ele.title}</Text>
+                                return (
+                                    <TouchableOpacity onPress={() => this.handleCategory(e, ele)} key={ele.title}>
+                                        <Text style={{textAlign: 'center'}}>{ele.title}</Text>
+                                    </TouchableOpacity>
+                                )
                             })
                         })}
                     </View>

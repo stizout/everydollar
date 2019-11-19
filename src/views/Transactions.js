@@ -17,7 +17,7 @@ const Transactions = ({t, category}) => {
         return (
             <View style={styles.viewContainer}>
                 <Searchbar />
-                <ScrollView>
+                <ScrollView style={{marginBottom: 150}}>
                     {t.transactions.map((t, i) => <Transaction 
                                                     date={t.date} 
                                                     title={t.where} 

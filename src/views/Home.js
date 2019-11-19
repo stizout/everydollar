@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, RefreshControl } from 'react-native';
 import Footer from '../components/Footer';
 import ViewHeader from '../components/ViewHeader'
 import { withNavigation } from 'react-navigation';
@@ -10,6 +10,7 @@ import ScreenMapper from '../components/ScreenMapper';
 import budgetArr from '../../budget.json'
 import jsonServer from '../api/jsonServer';
 import AddTransaction from './AddTransaction';
+import UnTrackedBubble from '../components/UnTrackedBubble';
 
 
 
@@ -18,6 +19,8 @@ const RootHome = ({navigation, category, setBudget, budget, setTransactions}) =>
     const [ budget2, setTempBudget ] = useState([]);
     const [ transactions, setTempTransactions ] = useState([]);
     const { november: {budgetCategories} } = budgetArr;
+    const [ unTracked, setUnTracked ] = useState([]);
+    const [ refreshing, setRefreshing ] = useState(false);
     useEffect(() => {
         if(budget) {
             jsonServer.get('/budget').then(res => {
@@ -26,10 +29,29 @@ const RootHome = ({navigation, category, setBudget, budget, setTransactions}) =>
                 jsonServer.get('/transactions').then(response => {
                     setTempTransactions(response.data);
                     setTransactions(response.data);
+                    let unTrackedTransactions = response.data.filter(e => e.budgetCategory === null);
+                    setUnTracked(unTrackedTransactions);
                 })
             });
         }
     }, []);
+
+    onRefresh = () => {
+        setRefreshing(true);
+
+    }
+
+    refreshData = () => {
+        jsonServer.get('/transactions').then(response => {
+            setTempTransactions(response.data);
+            setTransactions(response.data);
+            let unTrackedTransactions = response.data.filter(e => e.budgetCategory === null);
+            setUnTracked(unTrackedTransactions);
+            setTimeout(() => {
+                setRefreshing(false);
+            }, 2000)
+        })
+    }
       if(budget2.length === 0) {
           return <Text>Loading</Text>
       }
@@ -39,10 +61,11 @@ const RootHome = ({navigation, category, setBudget, budget, setTransactions}) =>
       } else {
           return (
               <View style={styles.viewContainer}>
-                  <ScrollView>
+                  <ScrollView refreshControl={<RefreshControl onRefresh={onRefresh} refreshing={refreshing}/>}>
                       <ViewHeader title="Monthly Income" budget={budgetCategories[0]}/>
                       <ScreenMapper screen={category.category} budgets={budget2} transactions={transactions} />
                   </ScrollView>
+                  <UnTrackedBubble unTracked={unTracked} budgetCategories={budget2} refreshData={refreshData}/>
                   <Footer />
               </View>
           )
