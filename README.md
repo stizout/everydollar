@@ -1,4 +1,4 @@
 # everydollar
 
 Adding a transaction
-![](EveryDollar 1.gif)
+![](EveryDollar1.gif)
